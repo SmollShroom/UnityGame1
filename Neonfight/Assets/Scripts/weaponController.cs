@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class weaponController : MonoBehaviour
@@ -30,8 +32,12 @@ public class weaponController : MonoBehaviour
 
         //// Start cooldown
         //CanAttack = false;
+
+        //StartCoroutine(ResetAttack());
+
         ////Invoke(nameof(ResetAttack), AttackCooldown);
-    }
+    } 
+
     public void SpecialSwordAttack()
     {
         // Trigger attack animation
@@ -45,9 +51,18 @@ public class weaponController : MonoBehaviour
         ////Invoke(nameof(ResetAttack), AttackCooldown);
     }
 
-    // numerator ResetAttack()
-    // yield return  new WaitCooldown(AttackCooldown);
-    //CanAttack = true;
+     //IEnumerator ResetAttack() {
+        
+       // print("Starting cooldown...");
+       // CanAttack = true;
+       // yield return new waitforseconds(AttackCooldown);
 
-    //}
+   // }
+    
+
+
+
 }
+
+
+
