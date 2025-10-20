@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _gravityValue = -9.81f;
 
+    [SerializeField]
+    private float _maxPlayerLifePoints = 5f;
+    [SerializeField]
+    private float _currentPlayerLifePoints;
+   
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        _currentPlayerLifePoints = _maxPlayerLifePoints;
     }
 
     private void Update()
@@ -41,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Movement()
     {
         _groundedPlayer = _controller.isGrounded;
+
         if (_groundedPlayer && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0f;
@@ -55,15 +63,24 @@ public class PlayerController : MonoBehaviour
 
         _controller.Move(movementDirection * _playerSpeed * Time.deltaTime);
 
+          
+
         if (movementDirection != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
         }
+            //Debug
+            if (_groundedPlayer)
+            {
+               // print("Grounded");
+            }
 
-        if (Input.GetButtonDown("Jump") && _groundedPlayer)
+        if (Input.GetButtonDown("Jump")) //&& _groundedPlayer
         {
+            print("Jump!");
+
             _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
         }
 
