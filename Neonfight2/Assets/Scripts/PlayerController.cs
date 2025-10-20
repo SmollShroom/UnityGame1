@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float _playerSpeed = 5f;
 
     [SerializeField]
-    private float _rotationSpeed = 10f;
+    private float _rotationSpeed = 20f;
 
     [SerializeField]
     private Camera _followCamera;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _jumpHeight = 1.0f;
     [SerializeField]
-    private float _gravityValue = -9.81f;
+    private float _gravityValue = -20.0f;
 
     [SerializeField]
     private float _maxPlayerLifePoints = 5f;
