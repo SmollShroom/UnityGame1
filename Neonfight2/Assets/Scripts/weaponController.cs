@@ -28,29 +28,28 @@ public class weaponController : MonoBehaviour
     public void SwordAttack()
     {
         isAttacking = true;
-        // Start cooldown
         CanAttack = false;
 
         // Trigger attack animation
         Animator swordAnimator = sword.GetComponent<Animator>();
         swordAnimator.SetTrigger("attack");
-            print("Sword Attack!");
+        //print("Sword Attack!");
         AudioSource ac = GetComponent<AudioSource>();
         ac.clip = SwordAttackClip;
-        
+
         StartCoroutine(ResetAttackCooldown());
         //Invoke(nameof(ResetAttack), AttackCooldown);
     }
 
     public void SpecialSwordAttack()
     {
-        // Start cooldown
+        isAttacking = true;
         CanAttack = false;
 
         // Trigger attack animation
         Animator swordAnimator = sword.GetComponent<Animator>();
         swordAnimator.SetTrigger("specialAttack");
-            print("Sword special Attack!");
+        //print("Sword special Attack!");
         AudioSource ac = GetComponent<AudioSource>();
         ac.clip = SwordSpecialAttackClip;
 
@@ -60,9 +59,16 @@ public class weaponController : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
-        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(ResetAttackBool());
+        yield return new WaitForSeconds(AttackCooldown);
         CanAttack = true;
 
+    }
+
+    IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
     }
 
 
