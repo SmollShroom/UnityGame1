@@ -843,7 +843,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1872135312
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ Transform:
   m_GameObject: {fileID: 1872135309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.99, y: 1.83, z: 8.88}
+  m_LocalPosition: {x: -5.38, y: 1.78, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2026,7 +2026,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1, y: 6.8897486, z: 2.1253402}
+  m_Size: {x: 0.6824059, y: 6.8897486, z: 2.1253402}
   m_Center: {x: 0.31335497, y: 3.4116275, z: 0.4945658}
 --- !u!114 &7576868016814187781
 MonoBehaviour:
@@ -2040,8 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4c1bfe2aec67a4cad392f251585986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-<<<<<<< Updated upstream
-  wp: {fileID: 0}
+  wp: {fileID: 1559535415}
   HitParticle: {fileID: 0}
 --- !u!1 &7858203522929625821
 GameObject:
@@ -2187,10 +2186,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
   m_Center: {x: -9.313226e-10, y: -0.0000000018626451, z: 9.313226e-10}
-=======
-  wc: {fileID: 1559535415}
-  HitParticle: {fileID: 6282576786433503384, guid: eea00f122de64c645aee0170dd5ae1c3, type: 3}
->>>>>>> Stashed changes
 --- !u!4 &8923103674251357305
 Transform:
   m_ObjectHideFlags: 0
@@ -2227,8 +2222,8 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 8526791427058123079}
   - {fileID: 410087041}
   - {fileID: 330585546}
   - {fileID: 924814368}
   - {fileID: 1872135315}
-  - {fileID: 8526791427058123079}
