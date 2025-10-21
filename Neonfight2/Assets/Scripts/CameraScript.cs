@@ -23,7 +23,7 @@ public class CameraScript : MonoBehaviour
     private float _smoothTime = 0.2f;
 
     [SerializeField]
-    private Vector2 _rotationXMinMax = new Vector2(-40, 40);
+    private Vector2 _rotationXMinMax = new Vector2(-45, 60);
 
     void Update()
     {

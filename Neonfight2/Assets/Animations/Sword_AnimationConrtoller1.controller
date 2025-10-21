@@ -152,7 +152,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimationConrtoller1
+  m_Name: Sword_AnimationConrtoller1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: attack
