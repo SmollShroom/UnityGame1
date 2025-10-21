@@ -8,6 +8,8 @@ public class weaponController : MonoBehaviour
     public bool CanAttack = true;
     public float AttackCooldown = 1.0f;
 
+    public AudioClip SwordAttackClip;
+    public AudioClip SwordSpecialAttackClip;
 
 
     void Update()
@@ -24,42 +26,42 @@ public class weaponController : MonoBehaviour
 
     public void SwordAttack()
     {
+        // Start cooldown
+        CanAttack = false;
+
         // Trigger attack animation
         Animator swordAnimator = sword.GetComponent<Animator>();
         swordAnimator.SetTrigger("attack");
-            
-            //print("Sword Attack!");
-
-        //// Start cooldown
-        //CanAttack = false;
-
-        //StartCoroutine(ResetAttack());
-
-        ////Invoke(nameof(ResetAttack), AttackCooldown);
-    } 
+            print("Sword Attack!");
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.clip = SwordAttackClip;
+        
+        StartCoroutine(ResetAttackCooldown());
+        //Invoke(nameof(ResetAttack), AttackCooldown);
+    }
 
     public void SpecialSwordAttack()
     {
+        // Start cooldown
+        CanAttack = false;
+
         // Trigger attack animation
         Animator swordAnimator = sword.GetComponent<Animator>();
         swordAnimator.SetTrigger("specialAttack");
+            print("Sword special Attack!");
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.clip = SwordSpecialAttackClip;
 
-        //print("Sword Attack!");
+        StartCoroutine(ResetAttackCooldown());
 
-        //// Start cooldown
-        //CanAttack = false;
-        ////Invoke(nameof(ResetAttack), AttackCooldown);
     }
 
-     //IEnumerator ResetAttack() {
-        
-       // print("Starting cooldown...");
-       // CanAttack = true;
-       // yield return new waitforseconds(AttackCooldown);
+    IEnumerator ResetAttackCooldown()
+    {
+        yield return new WaitForSeconds(1.0f);
+        CanAttack = true;
 
-   // }
-    
-
+    }
 
 
 }

@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
         }
+
             //Debug
             if (_groundedPlayer)
             {
@@ -87,4 +88,8 @@ public class PlayerController : MonoBehaviour
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
+
+
+   
+
 }
