@@ -3,13 +3,20 @@ using UnityEngine;
 public class CollisionDetection : MonoBehaviour
 {
     public weaponController wp;
-    public GameObject HitParticle; 
+    public GameObject HitParticle;
 
-        void ontriggerEnter(Collider other)
+    private void OntriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-               other.GetComponent<Animator>().SetTrigger("hit");        //important that every 
+            Debug.Log(other.name);
+            other.GetComponent<Animator>().SetTrigger("hit");        //important that every enemy has an animator with a "hit" trigger
+
+            Instantiate(HitParticle, new Vector3(other.transform.position.x, 
+                transform.position.y, 
+                other.transform.position.z),
+                other.transform.rotation);
+
         }
     }
 }

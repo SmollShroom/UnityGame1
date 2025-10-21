@@ -11,6 +11,7 @@ public class weaponController : MonoBehaviour
     public AudioClip SwordAttackClip;
     public AudioClip SwordSpecialAttackClip;
 
+    public bool isAttacking = false;
 
     void Update()
     {
@@ -26,6 +27,7 @@ public class weaponController : MonoBehaviour
 
     public void SwordAttack()
     {
+        isAttacking = true;
         // Start cooldown
         CanAttack = false;
 

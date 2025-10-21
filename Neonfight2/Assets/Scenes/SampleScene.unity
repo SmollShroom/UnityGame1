@@ -1043,6 +1043,7 @@ MonoBehaviour:
   AttackCooldown: 1
   SwordAttackClip: {fileID: 8300000, guid: 581ac9bc77b910845be955cf0b752664, type: 3}
   SwordSpecialAttackClip: {fileID: 8300000, guid: d7e591afe78225e438f305dd4fd88e38, type: 3}
+  isAttacking: 0
 --- !u!82 &1559535416
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1335,6 +1336,7 @@ GameObject:
   - component: {fileID: 6342136382879252886}
   - component: {fileID: 7576868016814187779}
   - component: {fileID: 7576868016814187780}
+  - component: {fileID: 7576868016814187781}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1512,6 +1514,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6824059, y: 6.8897486, z: 2.1253402}
   m_Center: {x: 0.31335497, y: 3.4116275, z: 0.4945658}
+--- !u!114 &7576868016814187781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559737886517645171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4c1bfe2aec67a4cad392f251585986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  wp: {fileID: 0}
+  HitParticle: {fileID: 0}
 --- !u!4 &8923103674251357305
 Transform:
   m_ObjectHideFlags: 0
