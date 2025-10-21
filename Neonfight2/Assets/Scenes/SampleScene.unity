@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4c1bfe2aec67a4cad392f251585986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  wp: {fileID: 1559535415}
+  wc: {fileID: 0}
   HitParticle: {fileID: 0}
 --- !u!1 &7858203522929625821
 GameObject:
