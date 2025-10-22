@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour
     private Transform _target;
 
     [SerializeField]
-    private float _distanceFromTarget = 3.0f;
+    private float _distanceFromTarget = 5.5f;
 
     private Vector3 _currentRotation;
     private Vector3 _smoothVelocity = Vector3.zero;

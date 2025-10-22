@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -21,17 +23,24 @@ public class EnemyScript : MonoBehaviour
         }
         public void Die()
         {
-            // Play death animation or effects here
-            Destroy(gameObject); // Remove enemy from the scene
-        }
+            GetComponentInChildren<Animator>().SetTrigger("dead");
+            StartCoroutine(WaitForAnimation(2));
+
+    }
 
 
-
-    
 
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    IEnumerator WaitForAnimation(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
+    }
+
+
 }
