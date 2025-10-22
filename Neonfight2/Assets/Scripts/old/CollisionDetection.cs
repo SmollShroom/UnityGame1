@@ -11,7 +11,7 @@ public class CollisionDetection : MonoBehaviour
 
         if (other.tag == "enemy") //&& wc.isAttacking
         {
-            Debug.Log(other.name);
+            Debug.Log(other.name + "got hit");
             other.GetComponent<Animator>().SetTrigger("hit");        //important that every enemy has an animator with a "hit" trigger
 
             Instantiate(HitParticle, new Vector3(other.transform.position.x,

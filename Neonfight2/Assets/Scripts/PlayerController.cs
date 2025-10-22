@@ -90,6 +90,20 @@ public class PlayerController : MonoBehaviour
     }
 
 
-   
+       public void TakeDamage(float damageAmount)
+        {
+            _currentPlayerLifePoints -= damageAmount;
+            if (_currentPlayerLifePoints <= 0)
+            {
+                Die();
+            }
+        }
+        private void Die()
+        {
+            // Handle player death (e.g., play animation, restart level, etc.)
+            Debug.Log("PLAYER DIED");
+        }
+
+
 
 }
