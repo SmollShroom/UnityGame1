@@ -24,10 +24,18 @@ public class PlayerController : MonoBehaviour
     private float _gravityValue = -20.0f;
 
     [SerializeField]
-    private float _maxPlayerLifePoints = 5f;
+    public float _maxPlayerLifePoints = 5f;
     [SerializeField]
-    private float _currentPlayerLifePoints;
-   
+    public float _currentPlayerLifePoints;
+
+    [SerializeField]
+    private GameObject LifeCounter;
+    private LiveCounterScript _liveCounterScript;
+
+    [SerializeField]
+    private GameObject ResourceMonitor;
+    private ResourceMonitorScript _resourceMonitorScript;
+
 
     private void Start()
     {
@@ -38,11 +46,39 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         _currentPlayerLifePoints = _maxPlayerLifePoints;
+
+        //// Cache the LiveCounter component from the LifeCounter GameObject
+        //if (LifeCounter != null)
+        //{
+        //    _liveCounterScript = LifeCounter.GetComponent<LiveCounterScript>();
+        //        if (_liveCounterScript == null)
+        //         Debug.LogWarning("LiveCounter component not found on LifeCounter GameObject");
+        //}
+        //else
+        //{
+        //    print("LifeCounter GameObject reference is null");
+        //}
+
+        // Cache the ResourceMonitor component from the GameObject
+        if (ResourceMonitor != null)
+        {
+            _resourceMonitorScript = ResourceMonitor.GetComponent<ResourceMonitorScript>();
+            _resourceMonitorScript.SetMaxResources(_maxPlayerLifePoints);
+
+            if (_resourceMonitorScript == null)
+                Debug.LogWarning("ResourceMonitor component not found on GameObject");
+        }
+        else
+        {
+            print("ResourceMonitor GameObject reference is null");
+        }
+
     }
 
     private void Update()
     {
         Movement();
+        DebugThingy();
     }
 
     void Movement()
@@ -80,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) //&& _groundedPlayer
         {
-            print("Jump!");
+            //print("Jump!");
 
             _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
         }
@@ -89,11 +125,54 @@ public class PlayerController : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
+    public void GainLife(float lifeAmount)
+    {
+        if (_currentPlayerLifePoints <= _maxPlayerLifePoints)
+        {
+            _currentPlayerLifePoints += lifeAmount;
 
-       public void TakeDamage(float damageAmount)
+            //// Safely call the method on the LiveCounter component
+            //if (_liveCounterScript != null)
+            //{
+            //    // Replace AdjustImageWidth with the actual public method name in LiveCounter
+            //    _liveCounterScript._AdjustImageWidth(_currentPlayerLifePoints);
+            //}
+
+            // Safely call the method on the LiveCounter component
+            if (_resourceMonitorScript != null)
+            {
+                // Replace AdjustImageWidth with the actual public method name in LiveCounter
+                _resourceMonitorScript._AdjustSlider(_currentPlayerLifePoints);
+            }
+
+        }
+    }
+    public void TakeDamage(float damageAmount)
+        {
+
+        if (_currentPlayerLifePoints > 0)
         {
             _currentPlayerLifePoints -= damageAmount;
-            if (_currentPlayerLifePoints <= 0)
+
+            //// Safely call the method on the LiveCounter component
+            //if (_liveCounterScript != null)
+            //{
+            //    // Replace AdjustImageWidth with the actual public method name in LiveCounter
+            //    _liveCounterScript._AdjustImageWidth(_currentPlayerLifePoints);
+            //}
+
+            // Safely call the method on the LiveCounter component
+            if (_resourceMonitorScript != null)
+            {
+                // Replace AdjustImageWidth with the actual public method name in LiveCounter
+                _resourceMonitorScript._AdjustSlider(_currentPlayerLifePoints);
+            }
+
+        }
+        
+
+
+        if (_currentPlayerLifePoints < 0)
             {
                 Die();
             }
@@ -104,6 +183,18 @@ public class PlayerController : MonoBehaviour
             Debug.Log("PLAYER DIED");
         }
 
-
+        private void DebugThingy()
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                TakeDamage(1f);
+                //Debug.Log("Player Life Points: " + _currentPlayerLifePoints);
+            }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GainLife(1f);
+            //Debug.Log("Player Life Points: " + _currentPlayerLifePoints);
+        }
+    }
 
 }

@@ -7,6 +7,8 @@ public class WeaponCollisionTest : MonoBehaviour
     public float WeaponDamage = 0f;
     public float WeaponSpecialDamage = 0f;
 
+    public float ResourceNeeded = 0f;
+
     public GameObject HitParticle;
 
     private void OnTriggerEnter(Collider other)
@@ -34,6 +36,24 @@ public class WeaponCollisionTest : MonoBehaviour
                 other.transform.rotation);
             }
         }
+
+        if (wc.isSpecialAttacking)
+        {
+            if (other.tag == "enemy" && wc.isSpecialAttacking)
+            {
+                Debug.Log("Weapon SPECIAL HIT: " + other.name);
+                other.GetComponentInChildren<Animator>().SetTrigger("hit");         //important that every enemy has an animator with a "hit" trigger
+                Debug.Log("Animator component: " + other.GetComponentInChildren<Animator>().name);
+                other.GetComponent<EnemyScript>().TakeDamage(WeaponSpecialDamage);
+             
+                //Particles
+                Instantiate(HitParticle, new Vector3(other.transform.position.x,
+                transform.position.y,
+                other.transform.position.z),
+                other.transform.rotation);
+            }
+        }
+
     }
 
 }
